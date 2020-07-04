@@ -1,0 +1,2 @@
+CREATE DATABASE kanban_production;
+CREATE DATABASE kanban_development;
