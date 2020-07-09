@@ -1,8 +1,11 @@
 -- +goose Up
 -- SQL in this section is executed when the migration is applied.
 CREATE TABLE kanbans (
-    id int NOT NULL,
+    id int NOT NULL AUTO_INCREMENT,
     title varchar(255),
+    created_at datetime,
+    updated_at datetime,
+    deleted_at datetime,
     PRIMARY KEY(id)
 );
 
