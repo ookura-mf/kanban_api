@@ -25,6 +25,7 @@ func main() {
 	e.GET("/kanbans/:id", controllers.GetKanban(db))
 	e.POST("/kanbans", controllers.CreateKanban(db))
 	e.PUT("/kanbans/:id", controllers.UpdateKanban(db))
+	e.DELETE("/kanbans/:id", controllers.DeleteKanban(db))
 
 	e.Logger.Fatal(e.Start(":1313"))
 }
