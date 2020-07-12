@@ -42,3 +42,23 @@ func CreateKanban(db *gorm.DB) echo.HandlerFunc {
 		return c.JSON(http.StatusOK, kanban)
 	}
 }
+
+func UpdateKanban(db *gorm.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		newKanban := new(models.Kanban)
+		if err := c.Bind(newKanban); err != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]string{"messages": "something wrong!"})
+		}
+
+		if id := c.Param("id"); id != "" {
+			var kanban models.Kanban
+			db.Find(&kanban, id)
+			if kanban.ID != 0 {
+				kanban.Title = newKanban.Title
+				db.Save(&kanban)
+				return c.JSON(http.StatusOK, kanban)	
+			}
+		}
+		return c.JSON(http.StatusNotFound, nil)
+	}
+}
