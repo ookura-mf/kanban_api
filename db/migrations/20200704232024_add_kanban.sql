@@ -2,7 +2,7 @@
 -- SQL in this section is executed when the migration is applied.
 CREATE TABLE kanbans (
     id int NOT NULL AUTO_INCREMENT,
-    title varchar(255),
+    title varchar(255) NOT NULL,
     created_at datetime,
     updated_at datetime,
     deleted_at datetime,
