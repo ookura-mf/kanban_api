@@ -21,6 +21,7 @@ func main() {
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"health": "ok"})
 	})
+	e.GET("/kanbans", controllers.GetAllKanbans(db))
 	e.POST("/kanbans", controllers.CreateKanban(db))
 
 	e.Logger.Fatal(e.Start(":1313"))

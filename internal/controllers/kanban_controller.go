@@ -9,6 +9,14 @@ import (
 	"github.com/labstack/echo"
 )
 
+func GetAllKanbans(db *gorm.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var kanbans []models.Kanban
+		db.Find(&kanbans)
+		return c.JSON(http.StatusOK, kanbans)
+	}
+}
+
 func CreateKanban(db *gorm.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		kanban := new(models.Kanban)
