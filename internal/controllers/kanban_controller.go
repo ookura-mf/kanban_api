@@ -17,6 +17,20 @@ func GetAllKanbans(db *gorm.DB) echo.HandlerFunc {
 	}
 }
 
+func GetKanban(db *gorm.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		if id := c.Param("id"); id != "" {
+			var kanban models.Kanban
+			db.Find(&kanban, id)
+			if kanban.ID != 0 {
+				return c.JSON(http.StatusOK, kanban)
+			}
+		}
+
+		return c.JSON(http.StatusNotFound, nil)
+	}
+}
+
 func CreateKanban(db *gorm.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		kanban := new(models.Kanban)
