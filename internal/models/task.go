@@ -1,9 +1,14 @@
 package models
 
+import (
+	"github.com/jinzhu/gorm"
+)
+
 type Task struct {
-	ID int
-	KanbanID int
+	gorm.Model
+	KanbanID int `json:"kanban_id"`
 	Kanban   Kanban
-	Title    string
-	Content  string
+	Title    string `json:"title"`
+	Content  string `json:"content"`
+	Status   int `json:"status"`
 }
