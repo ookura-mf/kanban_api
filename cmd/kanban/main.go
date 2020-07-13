@@ -27,7 +27,11 @@ func main() {
 	e.PUT("/kanbans/:id", controllers.UpdateKanban(db))
 	e.DELETE("/kanbans/:id", controllers.DeleteKanban(db))
 
+	e.GET("/tasks", controllers.GetAllTasks(db))
+	e.GET("/tasks/:id", controllers.GetTask(db))
 	e.POST("/tasks", controllers.CreateTask(db))
+	e.PUT("/tasks/:id", controllers.UpdateTask(db))
+	e.DELETE("/tasks/:id", controllers.DeleteTask(db))
 
-	e.Logger.Fatal(e.Start(":1313"))
+	e.Logger.Debug(e.Start(":1313"))
 }

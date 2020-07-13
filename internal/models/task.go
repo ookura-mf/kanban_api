@@ -10,4 +10,5 @@ type Task struct {
 	Kanban   Kanban
 	Title    string `json:"title"`
 	Content  string `json:"content"`
+	Status   int `json:"status"`
 }
